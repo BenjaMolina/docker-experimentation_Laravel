@@ -1,0 +1,26 @@
+# Version de Docker compose 
+version: '3'
+
+# Define el nombre de la red
+networks: 
+    laravel:
+
+# Imagenes utilizadas para la aplicacion        
+services:
+    nginx:
+        image: nginx:stable-alpine
+        container_name: nginx
+        ports: 
+            # Mapeamos el puerto de la Pc con la del contenedor
+            - "8080:80"
+        volumes: 
+            # Copiamos los archivos de nuestro proyecto a los contenedores
+            - ./src:/var/www
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            # Estos contenedores deben ejecutarse antes que el que estamos declarando 
+            - php
+            - mysql
+        networks: 
+            # Definimos en que red estara 
+            - laravel

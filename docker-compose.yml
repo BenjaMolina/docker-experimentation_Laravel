@@ -47,13 +47,13 @@ services:
             context: .
             # Nombre del archivo
             dockerfile: Dockerfile
-            # Nombre del contenedor
-            container_name: php            
-            volumes: 
-                # Copiamos todo lo de src (Laravel) al contenedor
-                - ./src:var/www            
-            ports: 
-                # Mapeamos los puertos
-                - "9000:9000"
-            networks: 
-                - laravel
+        # Nombre del contenedor
+        container_name: php            
+        volumes: 
+            # Copiamos todo lo de src (Laravel) al contenedor
+            - ./src:var/www            
+        ports: 
+            # Mapeamos los puertos
+            - "9000:9000"
+        networks: 
+            - laravel
